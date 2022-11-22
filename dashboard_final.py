@@ -48,8 +48,11 @@ def choose_file(run_value,tr_value):
 
     if run_value and tr_value:
         a=Run_Directory_Scanner
-        
-        return a.create(run_value,tr_value)
+        if f"run {run_value}"  in a.create() and f"tr {tr_value}" in a.create()[f"run {run_value}"]:
+            return a.create()[f"run {run_value}"][f"tr {tr_value}"]
+        else:
+           
+            return "This file does not exist"
 
   
 if __name__ == '__main__':
